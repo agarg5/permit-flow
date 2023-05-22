@@ -1,26 +1,32 @@
-import { InteriorWorkType, ExteriorWorkType, Permit } from "./types";
+import assert from "assert";
+import {
+  InteriorWorkType,
+  ExteriorWorkType,
+  Permit,
+  ResidentialWorkType,
+} from "./types";
 
 export async function spoofServer(
-  workType: InteriorWorkType | ExteriorWorkType
+  residentialWorkType: ResidentialWorkType,
+  workTypes: InteriorWorkType[] | ExteriorWorkType[]
 ): Promise<Permit | undefined> {
-  switch (workType) {
-    // interior
-    case "new_laundry_room":
-    case "new_bathroom":
+  if (residentialWorkType === "interior_work") {
+    const works = workTypes as InteriorWorkType[];
+    return {
+      type: "OTC",
+      plans:
+        works.includes("new_laundry_room") || works.includes("new_bathroom"),
+    };
+  } else if (residentialWorkType === "exterior_work") {
+    const works = workTypes as ExteriorWorkType[];
+    if (works.includes("other")) return { type: "In-House" };
+    if (
+      works.includes("garage_door_replacement") ||
+      works.includes("exterior_doors")
+    )
       return { type: "OTC", plans: true };
-    case "bathroom_remodel":
-    case "other_interior":
-      return { type: "OTC", plans: false };
-
-    // exterior
-    case "other_exterior":
-      return { type: "In-House" };
-    case "garage_door_replacement":
-    case "exterior_doors":
-      return { type: "OTC", plans: true };
-    case "reroofing":
-      return { type: "OTC", plans: false };
-    case "building_fences":
-      return { type: "None" };
+    if (works.includes("reroofing")) return { type: "OTC", plans: false };
+    return { type: "None" };
   }
+  assert("residential work type must be either interior_work or exterior_work");
 }

@@ -2,33 +2,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+To run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn install && yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## UI approach
+I created SVG images from the text using [iconomy](https://run.iconomy.app/). The prompt said to use "single-select" and "multi-select." I wasn't clear if this meant to implement dropdowns as might be inferred from that terminology. If I had to implement that I would look into using a UI component library such as [prime react](https://primereact.org/multiselect/) for that. However I felt that firstly a toggle would be better instead of a single select in the case of the first question as there are only two options. However, I felt that it would be even better to have icons that the use can click on instead of different options as this would be a better user experience. I am also assuming that the user can't select both `other` and another work type.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Database Spec
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Optimal Design

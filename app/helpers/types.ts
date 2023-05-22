@@ -2,7 +2,7 @@ export const interiorWorkOptions = {
   new_bathroom: "New Bathroom",
   new_laundry_room: "New Laundry Room",
   bathroom_remodel: "Bathroom Remodel",
-  other_interior: "Other Interior",
+  other: "Other Interior",
 };
 
 type interiorWorkOptionsType = typeof interiorWorkOptions;
@@ -14,7 +14,7 @@ export const exteriorWorkOptions = {
   garage_door_replacement: "Garage Door Replacement",
   new_laundry_room: "New Laundry Room",
   reroofing: "Re-roofing",
-  other_exterior: "Other Exterior",
+  other: "Other Exterior",
 };
 type exteriorWorkOptionsType = typeof exteriorWorkOptions;
 export type ExteriorWorkType = keyof exteriorWorkOptionsType;

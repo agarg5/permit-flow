@@ -18,7 +18,7 @@ export default function Home() {
     ResidentialWorkType | undefined
   >();
   const [residentialWorkSelection, setResidentialWorkSelection] = useState<
-    InteriorWorkType | ExteriorWorkType | undefined
+    InteriorWorkType[] | ExteriorWorkType[] | undefined
   >();
   const [permit, setPermit] = useState<Permit | undefined>();
 
@@ -32,12 +32,14 @@ export default function Home() {
     <Selection<InteriorWorkType>
       options={interiorWorkOptions}
       onSelect={(tag) => setResidentialWorkSelection(tag)}
+      multi
     />
   );
   const exteriorTypeSelectDisplay = (
     <Selection<ExteriorWorkType>
       options={exteriorWorkOptions}
       onSelect={(tag) => setResidentialWorkSelection(tag)}
+      multi
     />
   );
   const outputDisplay = permit ? (
@@ -57,9 +59,9 @@ export default function Home() {
     </button>
   );
   useEffect(() => {
-    if (!residentialWorkSelection) return;
+    if (!residentialWorkSelection || !residentialWorkType) return;
     setPermit(undefined);
-    spoofServer(residentialWorkSelection)
+    spoofServer(residentialWorkType, residentialWorkSelection)
       .then((result) => setPermit(result))
       .catch((error) => alert(error));
   }, [residentialWorkSelection]);
