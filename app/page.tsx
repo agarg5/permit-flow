@@ -8,10 +8,10 @@ import {
   exteriorWorkOptions,
   interiorWorkOptions,
   residentialWorkOptions,
-} from "./types";
-import { Selection } from "./selection";
-import { spoofServer } from "./server-spoof";
-import { PermitDisplay } from "./permit-display";
+} from "./helpers/types";
+import { Selection } from "./components/selection";
+import { spoofServer } from "./helpers/server-spoof";
+import { PermitDisplay } from "./components/permit-display";
 
 export default function Home() {
   const [residentialWorkType, setResidentialWorkType] = useState<

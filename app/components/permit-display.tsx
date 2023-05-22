@@ -1,4 +1,4 @@
-import { Permit } from "./types";
+import { Permit } from "../helpers/types";
 
 export function PermitDisplay(props: Permit) {
   const { type, plans } = props;
