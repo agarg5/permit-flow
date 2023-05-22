@@ -19,6 +19,7 @@ export function Selection<T>(props: SelectionProps<T>) {
             if (props.multi) {
               if (tag === "other") {
                 props.onSelect([tag as T]);
+                setSelections([tag as T]);
               } else if (selected)
                 setSelections(selections.filter((t) => t !== (tag as T)));
               else setSelections([...selections, tag as T]);
